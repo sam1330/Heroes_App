@@ -16,10 +16,17 @@ const LoginScreen = () => {
     <div className="container mt-5">
       <h1>LoginScreen</h1>
       <hr />
+      
+      <div className="card">
+        <div className="card-body">
+          <input type="text" className="form-control" name="username" />
+          <input type="text" className="form-control" name="password" />
+          <button className="btn btn-primary" onClick={handleLogin}>
+            Login
+          </button>
+        </div>
+      </div>
 
-      <button className="btn btn-primary" onClick={handleLogin}>
-        Login
-      </button>
     </div>
   );
 };
