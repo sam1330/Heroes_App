@@ -1,30 +1,68 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-const HeroCard = ({ hero }) => { 
+const CharactersByHero = ({ alter_ego, characters}) => {
+    // if ( alter_ego === characters ) return (<></>);
+    // return <p>{ characters }</p>
+    return ( alter_ego === characters )
+     ? <></>
+     : <p>{ characters }</p>;
+}
 
-  return (
-    <div className="card  bg-dark text-white">
-      <img
-        src={`/assets/${hero.id}.jpg`}
-        className="card-img-top"
-        alt={hero.superhero}
-        height="300"
-      />
-      <div className="card-body">
-        <h5 className="card-title text-center">{hero.superhero}</h5>
-        <p>
-          <span className="d-block">Alter ego: {hero.alter_ego}</span>
-          <span className="d-block">
-            First appearance: {hero.first_appearance}
-          </span>
-          <Link className="d-block" to={`/hero/${hero.id}`}>
-            More...
-          </Link>
-        </p>
-      </div>
-    </div>
-  );
-};
 
-export default HeroCard;
+export const HeroCard = ({ 
+    id,
+    superhero,
+    publisher,
+    alter_ego,
+    first_appearance,
+    characters ,
+}) => {
+
+    const heroImageUrl = `/assets/${ id }.jpg`;
+
+    // const charactesByHero =  (<p>{ characters }</p>);
+
+
+    return (
+        <div className="col animate__animated animate__fadeIn">
+            <div className="card">
+
+                <div className="row no-gutters">
+                    
+                    <div className="col-4">
+                        <img src={ heroImageUrl } className="card-img" alt={ superhero } />
+                    </div>
+
+                    <div className="col-8">
+
+                        <div className="card-body">
+
+                            <h5 className="card-title">{ superhero }</h5>
+                            <p className="card-text">{ alter_ego }</p>
+
+                            {/* {
+                                ( alter_ego !== characters ) && charactesByHero
+                                ( alter_ego !== characters ) && <p>{ characters }</p>
+                            } */}
+                            <CharactersByHero characters={ characters } alter_ego={ alter_ego } />
+
+                            <p className="card-text">
+                                <small className="text-muted">{ first_appearance }</small>
+                            </p>
+
+                            <Link to={`/hero/${ id }`}>
+                                Más..
+                            </Link>
+
+                            
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    )
+}

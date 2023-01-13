@@ -1,6 +1,6 @@
 import React from "react";
 import { getHeroesByPublisher } from "../../selectors/getHeroesByPublisher";
-import HeroCard from "./HeroCard";
+import { HeroCard } from "./HeroCard";
 
 const HeroesList = ({ publisher }) => {
 
@@ -11,7 +11,7 @@ const HeroesList = ({ publisher }) => {
       <ul>
         {
           heroes.map(hero => (
-            <HeroCard key={hero.id} hero={ hero }/>
+            <HeroCard key={hero.id} { ...hero }/>
           ))
         }
       </ul>
