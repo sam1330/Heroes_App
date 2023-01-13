@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../auth/context/AuthContext";
 
 const LoginScreen = () => {
+
+  const { login } = useContext( AuthContext );
 
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    console.log("handleLogin");
-    navigate('/marvel', {
+    const lastPage = JSON.parse(localStorage.getItem('lastPath')) || '/marvel';
+    login('Samuel Martinez');
+    navigate(lastPage, {
       replace: true
     });
   };
